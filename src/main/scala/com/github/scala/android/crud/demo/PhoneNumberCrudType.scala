@@ -4,8 +4,7 @@ import com.github.scala.android.crud._
 import persistence.CursorField._
 import view.ViewField._
 import persistence.PersistedType._
-//import java.util.Date
-//import com.github.scala.android.crud.ParentField._
+import com.github.scala.android.crud.ParentField._
 
 /**
  * A CRUD type for PhoneNumber.
@@ -14,21 +13,13 @@ import persistence.PersistedType._
 object PhoneNumberCrudType extends CrudType with SQLiteCrudType {
   def entityName = "PhoneNumber"
 
+  val phoneNumberField = persisted[String]("phoneNumber") + 
+          viewId(classOf[R], "phoneNumber", textViewWithInputType("phone"))
+
   def valueFields = List(
-    persisted[String]("name") + viewId(classOf[R], "name", textView) /*,
-
-    here are some sample fields
-
-    foreignKey(OtherCrudType),
-
-    persisted[MyEnum.Value]("myFieldName")(enumStringType[MyEnum.Value](MyEnum)) +
-          viewId(classOf[R], "myFieldName", enumerationView(MyEnum)),
-
-    persisted[Int]("myIntField") + viewId(classOf[R], "myIntField", intView),
-
-    persisted[Date]("myDateField") +
-      viewId[Date](classOf[R], "myDateField", dateView)
-  */
+    foreignKey(ContactCrudType),
+    persisted("type")(enumStringType[PhoneType.Value](PhoneType)) + viewId(classOf[R], "type", enumerationView(PhoneType)),
+    persisted[String]("phoneNumber") + viewId(classOf[R], "phoneNumber", phoneView)
   )
 
   def activityClass = classOf[PhoneNumberActivity]
@@ -37,6 +28,14 @@ object PhoneNumberCrudType extends CrudType with SQLiteCrudType {
   def cancelItemString = res.R.string.cancel_item
   def editItemString = R.string.edit_entity
   def addItemString = R.string.add_entity
+}
+
+object PhoneType extends Enumeration {
+  val Home = Value("Home")
+  val Mobile = Value("Cell")
+  val Work = Value("Work")
+  val Pager = Value("Pager")
+  val Other = Value("Other")
 }
 
 class PhoneNumberListActivity extends CrudListActivity(PhoneNumberCrudType, DemoApplication)
