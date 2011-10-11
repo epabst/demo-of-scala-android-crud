@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout 
+android:stretchColumns="1" android:layout_height="wrap_content" android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+  <TableRow>
+    <TextView android:text="Type:" android:textAppearance="?android:attr/textAppearanceLarge" android:gravity="right"/>
+    <Spinner android:drawSelectorOnTop="true" android:id="@+id/type"/>
+  </TableRow>
+  <TableRow>
+    <TextView android:text="Phone Number:" android:textAppearance="?android:attr/textAppearanceLarge" android:gravity="right"/>
+    <EditText android:inputType="phone" android:id="@+id/phoneNumber"/>
+  </TableRow>
+</TableLayout>
