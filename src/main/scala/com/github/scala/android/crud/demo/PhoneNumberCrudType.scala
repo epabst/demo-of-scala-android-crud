@@ -26,8 +26,8 @@ object PhoneNumberCrudType extends CrudType with SQLiteCrudType {
   def listActivityClass = classOf[PhoneNumberListActivity]
 
   def cancelItemString = res.R.string.cancel_item
-  def editItemString = R.string.edit_entity
-  def addItemString = R.string.add_entity
+  def editItemString = R.string.edit_phone_number
+  def addItemString = R.string.add_phone_number
 }
 
 object PhoneType extends Enumeration {

@@ -20,8 +20,8 @@ object GroupCrudType extends CrudType with SQLiteCrudType {
   def listActivityClass = classOf[GroupListActivity]
 
   def cancelItemString = res.R.string.cancel_item
-  def editItemString = R.string.edit_entity
-  def addItemString = R.string.add_entity
+  def editItemString = R.string.edit_group
+  def addItemString = R.string.add_group
 }
 
 class GroupListActivity extends CrudListActivity(GroupCrudType, DemoApplication)
