@@ -9,7 +9,7 @@ import com.github.scala.android.crud.{CrudType, CrudBackupAgent, CrudApplication
 object DemoApplication extends CrudApplication {
   val name = "Demo of scala-android-crud"
 
-  def allEntities = List[CrudType](GroupCrudType) //TODO Add other entities here
+  def allEntities = List[CrudType](GroupCrudType, ContactCrudType, PhoneNumberCrudType)
 }
 
 /**
