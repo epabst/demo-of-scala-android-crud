@@ -33,7 +33,7 @@
     <android.obfuscate>false</android.obfuscate>
     <scala.version>2.8.1</scala.version>
     <android.version>2.2.1</android.version>
-    <scala-android-crud.version>0.3-alpha1</scala-android-crud.version>
+    <scala-android-crud.version>0.3-alpha2</scala-android-crud.version>
     <!-- set a custom format that is guaranteed to grow as a Long number, so it can be used as version code
     in the AndroidManifest.xml -->
     <maven.build.timestamp.format>yyMMdddHHmm</maven.build.timestamp.format>
