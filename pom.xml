@@ -33,7 +33,7 @@
     <android.obfuscate>false</android.obfuscate>
     <scala.version>2.8.1</scala.version>
     <android.version>2.2.1</android.version>
-    <scala-android-crud.version>0.3-SNAPSHOT</scala-android-crud.version>
+    <scala-android-crud.version>0.3-alpha1</scala-android-crud.version>
     <!-- set a custom format that is guaranteed to grow as a Long number, so it can be used as version code
     in the AndroidManifest.xml -->
     <maven.build.timestamp.format>yyMMdddHHmm</maven.build.timestamp.format>
@@ -237,13 +237,6 @@
         <extensions>true</extensions>
         <executions>
           <execution>
-            <id>startEmulator</id>
-            <phase>initialize</phase>
-            <goals>
-              <goal>emulator-start</goal>
-            </goals>
-          </execution>
-          <execution>
             <id>alignApk</id>
             <phase>package</phase>
             <goals>
@@ -298,7 +291,7 @@
         <deployment.stage>In Development</deployment.stage>
         <android.debuggable>true</android.debuggable>
         <proguard.optimization.option1>-dontoptimize</proguard.optimization.option1>
-        <proguard.optimization.option2></proguard.optimization.option2>
+        <proguard.optimization.option2>-dontoptimize</proguard.optimization.option2>
       </properties>
     </profile>
     <profile>
