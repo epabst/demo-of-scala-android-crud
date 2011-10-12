@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Demo of scala-android-crud</string>
+    <string name="add_entity">Add Group</string>
+    <string name="edit_entity">Edit Group</string>
+</resources>
