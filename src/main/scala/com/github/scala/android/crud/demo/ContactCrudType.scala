@@ -20,10 +20,6 @@ object ContactCrudType extends CrudType with SQLiteCrudType {
 
   def activityClass = classOf[ContactActivity]
   def listActivityClass = classOf[ContactListActivity]
-
-  def cancelItemString = res.R.string.cancel_item
-  def editItemString = R.string.edit_contact
-  def addItemString = R.string.add_contact
 }
 
 class ContactListActivity extends CrudListActivity(ContactCrudType, DemoApplication)

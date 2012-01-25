@@ -1,14 +1,13 @@
 package com.github.scala.android.crud.demo
 
 import com.github.scala.android.crud._
-import action.{UriPath, StartActivityAction}
+import action.{ActivityWithVars, UriPath, StartActivityAction}
 import persistence.CursorField._
 import view.ViewField._
 import persistence.PersistedType._
 import com.github.scala.android.crud.ParentField._
 import android.content.Intent
 import android.net.Uri
-import android.app.Activity
 
 /**
  * A CRUD type for PhoneNumber.
@@ -22,14 +21,14 @@ object PhoneNumberCrudType extends CrudType with SQLiteCrudType {
 
   def valueFields = List(
     foreignKey(ContactCrudType),
-    persisted("type")(enumStringType[PhoneType.Value](PhoneType)) + viewId(classOf[R], "type", enumerationView(PhoneType)),
+    persistedEnum[PhoneType.Value]("type", PhoneType) + viewId(classOf[R], "type", enumerationView(PhoneType)),
     phoneNumberField
   )
 
 
   override def getEntityActions(application: CrudApplication) =
     new StartActivityAction {
-      def determineIntent(uri: UriPath, activity: Activity) =
+      def determineIntent(uri: UriPath, activity: ActivityWithVars) =
         withEntityPersistence(new CrudContext(activity, application), { persistence =>
           val phoneNumberEntity = persistence.findAll(uri).head
           val url = "tel:" + phoneNumberField.apply(phoneNumberEntity)
@@ -41,10 +40,6 @@ object PhoneNumberCrudType extends CrudType with SQLiteCrudType {
 
   def activityClass = classOf[PhoneNumberActivity]
   def listActivityClass = classOf[PhoneNumberListActivity]
-
-  def cancelItemString = res.R.string.cancel_item
-  def editItemString = R.string.edit_phone_number
-  def addItemString = R.string.add_phone_number
 }
 
 object PhoneType extends Enumeration {
